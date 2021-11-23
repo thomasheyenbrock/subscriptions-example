@@ -1,0 +1,9 @@
+name: Call a reusable workflow
+
+on: push
+
+jobs:
+  call-workflow-passing-data:
+    uses: thomasheyenbrock/subscriptions-example/.github/workflows/a.yml@main
+    with:
+      username: thomasheyenbrock
