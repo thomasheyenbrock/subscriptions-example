@@ -3,9 +3,19 @@ name: Call a reusable workflow
 on: push
 
 jobs:
-  call-workflow-passing-data:
+  before-call:
     steps:
-      - name: Call workflow
-        uses: thomasheyenbrock/subscriptions-example/.github/workflows/a.yml@main
-        with:
-          username: thomasheyenbrock
+      - name: Echo env
+        run: echo "${{ env.TEST_ENV }}"
+  call-workflow-passing-data:
+    needs:
+      - before-call
+    uses: thomasheyenbrock/subscriptions-example/.github/workflows/a.yml@main
+    with:
+      username: thomasheyenbrock
+  after-call:
+    needs:
+      - call-workflow-passing-data
+    steps:
+      - name: Echo env
+        run: echo "${{ env.TEST_ENV }}"
