@@ -4,6 +4,8 @@ on: push
 
 jobs:
   call-workflow-passing-data:
-    uses: thomasheyenbrock/subscriptions-example/.github/workflows/a.yml@main
-    with:
-      username: thomasheyenbrock
+    steps:
+      - name: Call workflow
+        uses: thomasheyenbrock/subscriptions-example/.github/workflows/a.yml@main
+        with:
+          username: thomasheyenbrock
