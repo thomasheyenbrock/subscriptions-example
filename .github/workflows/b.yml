@@ -2,6 +2,9 @@ name: Call a reusable workflow
 
 on: push
 
+env:
+  ACTIONS_ALLOW_UNSECURE_COMMANDS: true
+
 jobs:
   before-call:
     name: Echo env
